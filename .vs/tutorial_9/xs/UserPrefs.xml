@@ -1,0 +1,33 @@
+﻿<Properties StartupConfiguration="{AE2B9A1A-F46E-4730-8465-5A389BE08D48}|https">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.tutorial__9 PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="tutorial_9/Migrations/HospitalDbContextModelSnapshot.cs">
+    <Files>
+      <File FileName="tutorial_9/Migrations/20220521112013_InitialMigration.cs" Line="1" Column="1" />
+      <File FileName="tutorial_9/Migrations/20220521120154_AddedPrescriptionTable.cs" Line="1" Column="1" />
+      <File FileName="tutorial_9/Migrations/20220521120635_AddedPrescription_MedicamentTable.cs" Line="1" Column="1" />
+      <File FileName="tutorial_9/Migrations/HospitalDbContextModelSnapshot.cs" Line="18" Column="33" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="tutorial_9" expanded="True">
+            <Node name="tutorial_9" expanded="True">
+              <Node name="Dependencies" expanded="True">
+                <Node name="PackageDependencies" expanded="True" />
+              </Node>
+              <Node name="Migrations" expanded="True">
+                <Node name="HospitalDbContextModelSnapshot.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
+</Properties>
