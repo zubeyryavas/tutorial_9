@@ -72,9 +72,10 @@
 /Users/zubeyryavas/Desktop/TUTORIAL_9/tutorial_9/tutorial_9/obj/Debug/net7.0/staticwebassets.build.json
 /Users/zubeyryavas/Desktop/TUTORIAL_9/tutorial_9/tutorial_9/obj/Debug/net7.0/staticwebassets.development.json
 /Users/zubeyryavas/Desktop/TUTORIAL_9/tutorial_9/tutorial_9/obj/Debug/net7.0/scopedcss/bundle/tutorial_9.styles.css
-/Users/zubeyryavas/Desktop/TUTORIAL_9/tutorial_9/tutorial_9/obj/Debug/net7.0/tutorial_9.csproj.CopyComplete
 /Users/zubeyryavas/Desktop/TUTORIAL_9/tutorial_9/tutorial_9/obj/Debug/net7.0/tutorial_9.dll
 /Users/zubeyryavas/Desktop/TUTORIAL_9/tutorial_9/tutorial_9/obj/Debug/net7.0/refint/tutorial_9.dll
 /Users/zubeyryavas/Desktop/TUTORIAL_9/tutorial_9/tutorial_9/obj/Debug/net7.0/tutorial_9.pdb
 /Users/zubeyryavas/Desktop/TUTORIAL_9/tutorial_9/tutorial_9/obj/Debug/net7.0/tutorial_9.genruntimeconfig.cache
 /Users/zubeyryavas/Desktop/TUTORIAL_9/tutorial_9/tutorial_9/obj/Debug/net7.0/ref/tutorial_9.dll
+/Users/zubeyryavas/Desktop/TUTORIAL_9/tutorial_9/tutorial_9/obj/Debug/net7.0/tutorial_9.sourcelink.json
+/Users/zubeyryavas/Desktop/TUTORIAL_9/tutorial_9/tutorial_9/obj/Debug/net7.0/tutorial_9.csproj.Up2Date

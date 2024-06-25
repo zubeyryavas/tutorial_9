@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using tutorial_9.Context;
 
@@ -11,9 +12,10 @@ using tutorial_9.Context;
 namespace tutorial_9.Migrations
 {
     [DbContext(typeof(HospitalDbContext))]
-    partial class HospitalDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220521120154_AddedPrescriptionTable")]
+    partial class AddedPrescriptionTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,34 +50,6 @@ namespace tutorial_9.Migrations
                     b.HasKey("IdDoctor");
 
                     b.ToTable("Doctors");
-                });
-
-            modelBuilder.Entity("tutorial_9.Models.Medicament", b =>
-                {
-                    b.Property<int>("IdMedicament")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdMedicament"), 1L, 1);
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.HasKey("IdMedicament");
-
-                    b.ToTable("Medicaments");
                 });
 
             modelBuilder.Entity("tutorial_9.Models.Patient", b =>
@@ -130,35 +104,12 @@ namespace tutorial_9.Migrations
 
                     b.HasIndex("IdPatient");
 
-                    b.ToTable("Prescriptions");
-                });
-
-            modelBuilder.Entity("tutorial_9.Models.Prescription_Medicament", b =>
-                {
-                    b.Property<int>("IdMedicament")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Details")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<int>("Dose")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdPrescription")
-                        .HasColumnType("int");
-
-                    b.HasKey("IdMedicament");
-
-                    b.HasIndex("IdPrescription");
-
-                    b.ToTable("Prescription_Medicaments");
+                    b.ToTable("Prescription");
                 });
 
             modelBuilder.Entity("tutorial_9.Models.Prescription", b =>
                 {
-                    b.HasOne("Tutorial_8.Models.Doctor", "Doctor")
+                    b.HasOne("tutorial_9.Models.Doctor", "Doctor")
                         .WithMany("Prescriptions")
                         .HasForeignKey("IdDoctor")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -175,43 +126,14 @@ namespace tutorial_9.Migrations
                     b.Navigation("Patient");
                 });
 
-            modelBuilder.Entity("tutorial_9.Models.Prescription_Medicament", b =>
-                {
-                    b.HasOne("Tutorial_8.Models.Medicament", "Medicament")
-                        .WithMany("Prescription_Medicaments")
-                        .HasForeignKey("IdMedicament")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("tutorial_9.Models.Prescription", "Prescription")
-                        .WithMany("Prescription_Medicaments")
-                        .HasForeignKey("IdPrescription")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Medicament");
-
-                    b.Navigation("Prescription");
-                });
-
             modelBuilder.Entity("tutorial_9.Models.Doctor", b =>
                 {
                     b.Navigation("Prescriptions");
                 });
 
-            modelBuilder.Entity("tutorial_9.Models.Medicament", b =>
-                {
-                    b.Navigation("Prescription_Medicaments");
-                });
-
             modelBuilder.Entity("tutorial_9.Models.Patient", b =>
                 {
                     b.Navigation("Prescriptions");
-                });
-
-            modelBuilder.Entity("tutorial_9.Models.Prescription", b =>
-                {
-                    b.Navigation("Prescription_Medicaments");
                 });
 #pragma warning restore 612, 618
         }

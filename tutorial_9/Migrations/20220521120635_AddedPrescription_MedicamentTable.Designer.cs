@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using tutorial_9.Context;
 
@@ -11,9 +12,10 @@ using tutorial_9.Context;
 namespace tutorial_9.Migrations
 {
     [DbContext(typeof(HospitalDbContext))]
-    partial class HospitalDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220521120635_AddedPrescription_MedicamentTable")]
+    partial class AddedPrescription_MedicamentTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -75,7 +77,7 @@ namespace tutorial_9.Migrations
 
                     b.HasKey("IdMedicament");
 
-                    b.ToTable("Medicaments");
+                    b.ToTable("Medicament");
                 });
 
             modelBuilder.Entity("tutorial_9.Models.Patient", b =>
@@ -153,12 +155,12 @@ namespace tutorial_9.Migrations
 
                     b.HasIndex("IdPrescription");
 
-                    b.ToTable("Prescription_Medicaments");
+                    b.ToTable("Prescription_Medicament");
                 });
 
             modelBuilder.Entity("tutorial_9.Models.Prescription", b =>
                 {
-                    b.HasOne("Tutorial_8.Models.Doctor", "Doctor")
+                    b.HasOne("tutorial_9.Models.Doctor", "Doctor")
                         .WithMany("Prescriptions")
                         .HasForeignKey("IdDoctor")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -177,13 +179,13 @@ namespace tutorial_9.Migrations
 
             modelBuilder.Entity("tutorial_9.Models.Prescription_Medicament", b =>
                 {
-                    b.HasOne("Tutorial_8.Models.Medicament", "Medicament")
+                    b.HasOne("tutorial_9.Models.Medicament", "Medicament")
                         .WithMany("Prescription_Medicaments")
                         .HasForeignKey("IdMedicament")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("tutorial_9.Models.Prescription", "Prescription")
+                    b.HasOne("Tutorial_8.Models.Prescription", "Prescription")
                         .WithMany("Prescription_Medicaments")
                         .HasForeignKey("IdPrescription")
                         .OnDelete(DeleteBehavior.Cascade)
