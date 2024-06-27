@@ -12,9 +12,10 @@ using tutorial_9.Context;
 namespace tutorial_9.Migrations
 {
     [DbContext(typeof(HospitalDbContext))]
-    [Migration("20220521120743_AddedPrescription_MedicamentTableAgain")]
-    partial class AddedPrescription_MedicamentTableAgain
+    [Migration("20240627200343_AddedInitial")]
+    partial class AddedInitial
     {
+        /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
@@ -22,7 +23,7 @@ namespace tutorial_9.Migrations
                 .HasAnnotation("ProductVersion", "7.0.19")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("tutorial_9.Models.Doctor", b =>
                 {
@@ -30,7 +31,7 @@ namespace tutorial_9.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdDoctor"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdDoctor"));
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -50,6 +51,15 @@ namespace tutorial_9.Migrations
                     b.HasKey("IdDoctor");
 
                     b.ToTable("Doctors");
+
+                    b.HasData(
+                        new
+                        {
+                            IdDoctor = 1,
+                            Email = "xD",
+                            FirstName = "xD",
+                            LastName = "xD"
+                        });
                 });
 
             modelBuilder.Entity("tutorial_9.Models.Medicament", b =>
@@ -58,7 +68,7 @@ namespace tutorial_9.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdMedicament"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdMedicament"));
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -78,6 +88,15 @@ namespace tutorial_9.Migrations
                     b.HasKey("IdMedicament");
 
                     b.ToTable("Medicaments");
+
+                    b.HasData(
+                        new
+                        {
+                            IdMedicament = 1,
+                            Description = "xD",
+                            Name = "xD",
+                            Type = "xD"
+                        });
                 });
 
             modelBuilder.Entity("tutorial_9.Models.Patient", b =>
@@ -86,7 +105,7 @@ namespace tutorial_9.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdPatient"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdPatient"));
 
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime2");
@@ -96,7 +115,7 @@ namespace tutorial_9.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("lastName")
+                    b.Property<string>("LastName")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
@@ -104,15 +123,24 @@ namespace tutorial_9.Migrations
                     b.HasKey("IdPatient");
 
                     b.ToTable("Patients");
+
+                    b.HasData(
+                        new
+                        {
+                            IdPatient = 1,
+                            BirthDate = new DateTime(2001, 6, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "xD",
+                            LastName = "xD"
+                        });
                 });
 
             modelBuilder.Entity("tutorial_9.Models.Prescription", b =>
                 {
-                    b.Property<int>("Idprescription")
+                    b.Property<int>("IdPrescription")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Idprescription"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdPrescription"));
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
@@ -126,13 +154,23 @@ namespace tutorial_9.Migrations
                     b.Property<int>("IdPatient")
                         .HasColumnType("int");
 
-                    b.HasKey("Idprescription");
+                    b.HasKey("IdPrescription");
 
                     b.HasIndex("IdDoctor");
 
                     b.HasIndex("IdPatient");
 
                     b.ToTable("Prescriptions");
+
+                    b.HasData(
+                        new
+                        {
+                            IdPrescription = 1,
+                            Date = new DateTime(2022, 5, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DueDate = new DateTime(2022, 5, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IdDoctor = 1,
+                            IdPatient = 1
+                        });
                 });
 
             modelBuilder.Entity("tutorial_9.Models.Prescription_Medicament", b =>
@@ -156,6 +194,15 @@ namespace tutorial_9.Migrations
                     b.HasIndex("IdPrescription");
 
                     b.ToTable("Prescription_Medicaments");
+
+                    b.HasData(
+                        new
+                        {
+                            IdMedicament = 1,
+                            Details = "xD",
+                            Dose = 5,
+                            IdPrescription = 1
+                        });
                 });
 
             modelBuilder.Entity("tutorial_9.Models.Prescription", b =>
