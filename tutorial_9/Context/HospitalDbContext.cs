@@ -63,7 +63,6 @@ namespace tutorial_9.Context
             });
             modelBuilder.Entity<Prescription>(e =>
             {
-                e.Navigation("Prescription");
                 e.HasData(new Prescription
                 {
                     IdPrescription = 1,
